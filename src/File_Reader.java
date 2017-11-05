@@ -1,32 +1,26 @@
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class File_Reader {
-    private int row;
-    private int col;
-    private int dimension;
     private Path file;
-    private int[][] puzzle;
+    private List<String> line;
 
     public File_Reader(Path file) {
         this.file = file;
     }
 
     public void readFile() {
-        int i;
         try {
-            InputStream in = Files.newInputStream(file);
-            while ((i = in.read()) != -1) {
-                System.out.println((char) i);
-            }
+            line = Files.lines(file).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public int[][] getPuzzle() {
-        return puzzle;
+
+    public List<String> getLine() {
+        return line;
     }
 }
