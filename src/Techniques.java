@@ -1,4 +1,4 @@
 public interface Techniques {
-    public void Solve();
+    public boolean Solve();
     public Puzzle getPuzzle();
 }
